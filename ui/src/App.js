@@ -11,6 +11,8 @@ import reactLogo from "./images/react.svg";
 import playLogo from "./images/play.svg";
 import scalaLogo from "./images/scala.svg";
 import Client from "./Client";
+import SwaggerUI from "swagger-ui-react"
+import "swagger-ui-react/swagger-ui.css"
 
 import "./App.css";
 
@@ -37,6 +39,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <SwaggerUI url="/swagger.json" />
           <h1>Welcome to {this.state.title}</h1>
           <nav>
             <Link to="scala">
