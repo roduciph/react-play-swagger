@@ -1,26 +1,23 @@
 name := """play-scala-react-seed"""
 
 version := "1.0-SNAPSHOT"
+scalaVersion := "2.13.10"
 
 lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
+  .enablePlugins(PlayScala, SwaggerPlugin)
   .settings(
     watchSources ++= (baseDirectory.value / "public/ui" ** "*").get
   )
-lazy val root = (project in file("."))
-  .enablePlugins(PlayScala, SwaggerPlugin) //enable plugin
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-scalaVersion := "2.13.10"
-
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
+// libraryDependencies += "org.webjars" % "swagger-ui" % "2.2.0" // play-swagger ui integration
 
 addCommandAlias(
   "validateCode",
   "scalafmtSbtCheck; scalafmtCheckAll; uiCodeStyleCheck"
 )
 
-addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.11.0")
 swaggerDomainNameSpaces := Seq("models")
