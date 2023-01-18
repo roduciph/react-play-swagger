@@ -1,9 +1,14 @@
-[![MIT License][license-badge]][LICENSE]
+[![MIT License][license-badge]][license]
 
-# Scala Play React Seed
+# Scala Play React Seed With Swagger
+
+This project was forked from https://github.com/playframework/play-scala-react-seed
+and augmented with Swagger following https://github.com/iheartradio/play-swagger
+
+It should give (out of the box) a React (JS) frontend and a Scala backend using Swagger
+to document the API.
 
 > Use play framework to develop the web application backend/services and frontend using React Create App, all in a totally integrated workflow and single unified console. This approach will deliver perfect development experience without CORS hassle.
-
 
 Read more @ http://bit.ly/2A1AzEq
 
@@ -11,22 +16,22 @@ Read more @ http://bit.ly/2A1AzEq
 
 ## Version Summary
 
-* [Play Framework: 2.8.17](https://www.playframework.com/documentation/2.8.17/Home)
-* [React: 18.2.0](https://reactjs.org/)
-* [Create React App: 5.0.1](https://github.com/facebookincubator/create-react-app)
+- [Play Framework: 2.8.17](https://www.playframework.com/documentation/2.8.17/Home)
+- [React: 18.2.0](https://reactjs.org/)
+- [Create React App: 5.0.1](https://github.com/facebookincubator/create-react-app)
 
 ## How to use it?
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/)
-* [scala](https://www.scala-lang.org/download/)
+- [Node.js](https://nodejs.org/)
+- [scala](https://www.scala-lang.org/download/)
 
 ### Let's get started,
 
-* Fork or clone this repository.
+- Fork or clone this repository.
 
-* Used any of the following [SBT](http://www.scala-sbt.org/) commands which will intern trigger frontend associated npm scripts.
+- Used any of the following [SBT](http://www.scala-sbt.org/) commands which will intern trigger frontend associated npm scripts.
 
 ```
     sbt clean           # Clean existing build artifacts
@@ -40,7 +45,7 @@ Read more @ http://bit.ly/2A1AzEq
     sbt test            # Run both backend and frontend unit tests
 ```
 
-* This seed is not using [scala play views](https://www.playframework.com/documentation/2.6.x/ScalaTemplates). All the views and frontend associated routes are served via [React](https://reactjs.org/) code base under `ui` directory.
+- This seed is not using [scala play views](https://www.playframework.com/documentation/2.6.x/ScalaTemplates). All the views and frontend associated routes are served via [React](https://reactjs.org/) code base under `ui` directory.
 
 ## Complete Directory Layout
 
@@ -77,24 +82,23 @@ Read more @ http://bit.ly/2A1AzEq
 ├── build.sbt                             # Play application SBT configuration
 ├── LICENSE                               # License Agreement file
 ├── README.md                             # Application user guide
-└── ui-build.sbt                          # SBT command hooks associated with frontend npm scripts 
+└── ui-build.sbt                          # SBT command hooks associated with frontend npm scripts
 ```
 
 ## What is new in here?
 
 ### FrontendCommands.scala
 
-* Frontend build command mapping configuration.
+- Frontend build command mapping configuration.
 
 ```
     ├── /project/
     │     ├── FrontendCommands.scala
 ```
 
-
 ### FrontendRunHook.scala
 
-* PlayRunHook implementation to trigger ``npm run start`` on ``sbt run``.
+- PlayRunHook implementation to trigger `npm run start` on `sbt run`.
 
 ```
     ├── /project/
@@ -103,42 +107,42 @@ Read more @ http://bit.ly/2A1AzEq
 
 ### FrontendController.scala
 
-* Asset controller wrapper serving frontend assets and artifacts.
+- Asset controller wrapper serving frontend assets and artifacts.
 
 ```
-    ├── /app/                                 
-    │     └── /controllers/                   
+    ├── /app/
+    │     └── /controllers/
     │           └── FrontendController.scala
 ```
 
 ### ui-build.sbt
 
-* This file contains the build task hooks to trigger frontend npm scripts on sbt command execution.
+- This file contains the build task hooks to trigger frontend npm scripts on sbt command execution.
 
 ### npm run commands
 
-* New and modified npm scripts of [Create React App](https://github.com/facebookincubator/create-react-app) generated package.json.
-* Check [UI README.md](./ui/README.md) to see all available frontend build tasks.
+- New and modified npm scripts of [Create React App](https://github.com/facebookincubator/create-react-app) generated package.json.
+- Check [UI README.md](./ui/README.md) to see all available frontend build tasks.
 
 ```
-├── /ui/                       
-│     ├── package.json          
+├── /ui/
+│     ├── package.json
 ```
 
 ## Routes
 
 ```
-├── /conf/      
+├── /conf/
 │     ├── routes
 ```
 
-* The following route configuration map index.html to entry route (root). This should be placed as the initial route.
+- The following route configuration map index.html to entry route (root). This should be placed as the initial route.
 
 ```
 GET        /             controllers.FrontendController.index()
 ```
 
-* All API routes should be prefixed with API prefix defined under ``application.conf`` (Default prefix ``apiPrefix = "api"``)
+- All API routes should be prefixed with API prefix defined under `application.conf` (Default prefix `apiPrefix = "api"`)
 
 Example API route:
 
@@ -146,7 +150,7 @@ Example API route:
 GET        /api/summary  controllers.HomeController.appSummary
 ```
 
-* The following route is being used to serve frontend associated build artifacts (css, js) and static assets (images, etc.). This should be placed as the final route.
+- The following route is being used to serve frontend associated build artifacts (css, js) and static assets (images, etc.). This should be placed as the final route.
 
 ```
 GET        /*file        controllers.FrontendController.assetOrDefault(file)
@@ -156,17 +160,17 @@ GET        /*file        controllers.FrontendController.assetOrDefault(file)
 
 ## Can be used to implement any front end/ui build!
 
-* Simply replace the ui directory with the build of your choice
-* Make output directory ROOT/public/
-* Implement a proxy to localhost:9000
+- Simply replace the ui directory with the build of your choice
+- Make output directory ROOT/public/
+- Implement a proxy to localhost:9000
 
 ## Looking for some other frontend framework or language choice
 
-* [Play Java React Seed](https://github.com/playframework/play-java-react-seed)
-* [Play Scala Angular Seed](https://github.com/playframework/play-scala-angular-seed)
-* [Play Java Angular Seed](https://github.com/playframework/play-java-angular-seed)
-* [Scala Play Vuejs Seed](https://github.com/duncannevin/scala-play-vue-seed) by [Duncan Nevin](https://github.com/duncannevin)
-* [Java Play Vuejs Seed](https://github.com/duncannevin/java-play-vue-seed) by [Duncan Nevin](https://github.com/duncannevin)
+- [Play Java React Seed](https://github.com/playframework/play-java-react-seed)
+- [Play Scala Angular Seed](https://github.com/playframework/play-scala-angular-seed)
+- [Play Java Angular Seed](https://github.com/playframework/play-java-angular-seed)
+- [Scala Play Vuejs Seed](https://github.com/duncannevin/scala-play-vue-seed) by [Duncan Nevin](https://github.com/duncannevin)
+- [Java Play Vuejs Seed](https://github.com/duncannevin/java-play-vue-seed) by [Duncan Nevin](https://github.com/duncannevin)
 
 ## License
 
