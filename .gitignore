@@ -8,3 +8,8 @@ target
 /RUNNING_PID
 /public
 .bsp
+# ~/.gitignore
+.metals/
+.bloop/
+.ammonite/
+metals.sbt

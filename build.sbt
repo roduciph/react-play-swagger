@@ -7,6 +7,8 @@ lazy val root = (project in file("."))
   .settings(
     watchSources ++= (baseDirectory.value / "public/ui" ** "*").get
   )
+lazy val root = (project in file("."))
+  .enablePlugins(PlayScala, SwaggerPlugin) //enable plugin
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 
@@ -19,3 +21,6 @@ addCommandAlias(
   "validateCode",
   "scalafmtSbtCheck; scalafmtCheckAll; uiCodeStyleCheck"
 )
+
+addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.11.0")
+swaggerDomainNameSpaces := Seq("models")
