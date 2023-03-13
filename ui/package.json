@@ -20,7 +20,7 @@
     "ncp": "^2.0.0",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
-    "swagger-ui-react": "^4.15.5"
+    "swagger-ui-react": "^4.18.1"
   },
   "proxy": "http://localhost:9000",
   "browserslist": {
